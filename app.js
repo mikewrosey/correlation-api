@@ -1,13 +1,14 @@
-const http = require('http')
 const express = require('express')
+const bodyParser = require('body-parser')
+
+const mainRoutes = require('./routes/main')
+const analyticsRoutes = require('./routes/analytics')
 
 const app = express()
 
-app.use((req, res, next) => {
+app.use(bodyParser.urlencoded({extended: false}))
 
-    next()
-})
+app.use(mainRoutes)
+app.use(analyticsRoutes)
 
-const server = http.createServer(app)
-
-server.listen(3000)
+app.listen(3000)
