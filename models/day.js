@@ -9,10 +9,7 @@ const Day = sequelize.define('day', {
         allowNull: false,
         primaryKey: true
     },
-    date: {
-        type: Sequelize.DATE,
-        allowNull: false
-    }
+    title: Sequelize.STRING
 })
 
 module.exports = Day

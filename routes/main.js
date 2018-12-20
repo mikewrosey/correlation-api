@@ -1,17 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res, next) => {
+const mainController = require('../controllers/main')
 
-})
-
-router.post('/', (req, res, next) => { 
-
-
-})
-
-router.put('/', (req, res, next) => {
-
-})
+router.get('/', mainController.getDay)
+router.post('/', mainController.postDay)
+router.put('/', mainController.updateDay)
 
 module.exports = router
