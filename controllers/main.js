@@ -8,7 +8,8 @@ exports.postDay = (req, res, next) => {
     Day.create({
         foods: req.body.foods,
         meds: req.body.meds,
-        symptoms: req.body.symptoms
+        symptoms: req.body.symptoms,
+        pageDate: req.body.pageDate
     })
 
     res.end()

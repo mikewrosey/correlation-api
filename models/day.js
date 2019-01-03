@@ -34,7 +34,8 @@ const Day = sequelize.define('day', {
         set(val) {
             return this.setDataValue('symptoms', JSON.stringify(val));
         }
-    }
+    },
+    pageDate: Sequelize.STRING
 })
 
 module.exports = Day
