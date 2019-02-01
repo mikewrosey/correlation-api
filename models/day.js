@@ -2,12 +2,6 @@ const Sequelize = require('sequelize')
 const sequelize = require('../util/database')
 
 const Day = sequelize.define('day', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-    },
     foods: { 
         type: Sequelize.STRING, 
         get() {
@@ -35,7 +29,11 @@ const Day = sequelize.define('day', {
             return this.setDataValue('symptoms', JSON.stringify(val));
         }
     },
-    pageDate: Sequelize.STRING
+    pageDate: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        primaryKey: true
+    }
 })
 
 module.exports = Day

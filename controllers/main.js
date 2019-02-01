@@ -1,19 +1,36 @@
 const Day = require('../models/day')
 
 exports.getDay = (req, res, next) => {
-    res.write('Test')
-    res.end()
+    if (!req.query.pageDate) res.send('No page date')
+
+    const page = { pageDate: req.query.pageDate }
+
+    Day.findOne({where: page})
+        .then((page) => {
+            console.log(page)
+            res.send(page)
+        })
+        .catch((err) => {
+            console.error(err)
+            res.end()
+        })
 }
+
 exports.postDay = (req, res, next) => {
-    Day.create({
+    const day = {
         foods: req.body.foods,
         meds: req.body.meds,
         symptoms: req.body.symptoms,
         pageDate: req.body.pageDate
-    })
+    }
 
-    res.end()
-}
-exports.updateDay = (req, res, next) => {
-
+    Day.upsert(day)
+        .then(() => {
+            res.status(200);
+            res.send(day);
+        })
+        .catch((err) => {
+            console.error(err)
+            res.end()
+        })
 }

@@ -11,10 +11,11 @@ const app = express()
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS')
   next()
 })
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use(mainRoutes)
@@ -22,8 +23,8 @@ app.use(analyticsRoutes)
 
 // Otherwise
 app.use((req, res, next) => {
-    // set and send status 404
-    res.status(404).send()
+  // set and send status 404
+  res.status(404).send()
 })
 
 sequelize
@@ -35,10 +36,10 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-sequelize.sync({logging: console.log}).then((resp) => {
-    app.listen(3000)
+sequelize.sync({ logging: console.log }).then((resp) => {
+  app.listen(3000)
 })
-.catch((err) => {
+  .catch((err) => {
     console.log(err)
-})
+  })
 
