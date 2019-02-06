@@ -7,12 +7,11 @@ exports.getDay = (req, res, next) => {
 
     Day.findOne({where: page})
         .then((page) => {
-            console.log(page)
             res.send(page)
         })
         .catch((err) => {
             console.error(err)
-            res.end()
+            res.send(err)
         })
 }
 
@@ -31,6 +30,6 @@ exports.postDay = (req, res, next) => {
         })
         .catch((err) => {
             console.error(err)
-            res.end()
+            res.send(err)
         })
 }

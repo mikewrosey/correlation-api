@@ -30,7 +30,7 @@ const Day = sequelize.define('day', {
         }
     },
     pageDate: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATEONLY,
         allowNull: false,
         primaryKey: true
     }

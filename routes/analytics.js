@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/analytics', (req, res, next) => {
+const analyticsController = require('../controllers/analytics')
 
-})
-
+router.get('/analytics', analyticsController.getAnalytics)
 
 module.exports = router
