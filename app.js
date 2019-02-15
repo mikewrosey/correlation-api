@@ -5,6 +5,7 @@ const sequelize = require('./util/database')
 
 const mainRoutes = require('./routes/main')
 const analyticsRoutes = require('./routes/analytics')
+const settingsRoutes = require('./routes/settings')
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json())
 
 app.use(mainRoutes)
 app.use(analyticsRoutes)
+app.use(settingsRoutes)
 
 // Otherwise
 app.use((req, res, next) => {
