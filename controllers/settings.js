@@ -1,13 +1,9 @@
-const Day = require('../models/day')
+const Settings = require('../models/settings')
 
-exports.getDay = (req, res, next) => {
-    if (!req.query.pageDate) res.send('No page date')
-
-    const page = { pageDate: req.query.pageDate }
-
-    Day.findOne({where: page})
-        .then((page) => {
-            res.send(page)
+exports.getSettings = (req, res, next) => {
+    Settings.findOne()
+        .then((settings) => {
+            res.send(settings)
         })
         .catch((err) => {
             console.error(err)
@@ -15,19 +11,19 @@ exports.getDay = (req, res, next) => {
         })
 }
 
-exports.postDay = (req, res, next) => {
-    const day = {
+exports.postSettings = (req, res, next) => {
+    const settings = {
         foods: req.body.foods,
         meds: req.body.meds,
         symptoms: req.body.symptoms,
         exercises: req.body.exercises,
-        pageDate: req.body.pageDate
+        id: 1
     }
 
-    Day.upsert(day)
+    Settings.upsert(settings)
         .then(() => {
             res.status(200);
-            res.send(day);
+            res.send(settings);
         })
         .catch((err) => {
             console.error(err)

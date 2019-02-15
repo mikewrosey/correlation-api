@@ -20,6 +20,15 @@ const Day = sequelize.define('day', {
             return this.setDataValue('meds', JSON.stringify(val));
         }
     },
+    exercises: {
+        type: Sequelize.STRING, 
+        get() {
+            return JSON.parse(this.getDataValue('exercises'));
+        }, 
+        set(val) {
+            return this.setDataValue('exercises', JSON.stringify(val));
+        }
+    },
     symptoms: { 
         type: Sequelize.STRING, 
         get() {
